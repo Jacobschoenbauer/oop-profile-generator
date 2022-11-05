@@ -15,15 +15,31 @@ WHEN I select the intern option
 THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated*/
-
-
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { type } = require("os");
+const inquirer = require("./lib/employee")
+const inquirer = require("./lib/manger")
+const inquirer = require("./lib/intern")
+const inquirer = require("./lib/engineer")
+
 
 const team = []
 
+function defineEmployee(){
+    inquirer.prompt([
+        
+        //employee questions
+    ]
+    ).then(answers=>{
+        //const employee = new Employee(// provide Employee information, eg answers.id)
+        //team.push(employee)
+        menu() 
+    })
+    }
 function defineManager(){
 inquirer.prompt([
+    
     //manger questions
 ]
 ).then(answers=>{
