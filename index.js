@@ -19,32 +19,60 @@ THEN I exit the application, and the HTML is generated*/
 
 const inquirer = require("inquirer");
 const fs = require("fs");
-inquirer;
-const questions = [
-    {
-        type: "checkbox",
-        name: "jobclass",
-        message: "Choose a license",
-        choices: ["Employee", "Manger", "Engineer", "intern"],
-        validate: (jobDone) => {
-          if (jobDone) {
-            return true;
-          } else {
-            console.log("please choose a job class");
-            return false;
-          }
-        },
-      },
-  {
-    type: "input",
-    message: "Name",
-    name: "name",
-  },
-  {
-    type: "input",
-    message: "ID",
-    name: "id",
-  },
- 
-  
-];
+
+const team = []
+
+function defineManager(){
+inquirer.prompt([
+    //manger questions
+]
+).then(answers=>{
+    //const manager = new Manager(// provide manger information, eg answers.id)
+    //team.push(manager)
+    menu() 
+})
+}
+function defineEngineer(){
+    inquirer.prompt([
+        //engineer questions
+      
+    
+    ]).then(answers =>{
+        //const engineer = new Engineer(// provide engineer information, eg answers.id)
+    //team.push(engineer)
+    menu() 
+})
+}
+function defineIntern(){
+    inquirer.prompt([
+        //intern questions
+      
+    
+    ]).then(answers =>{
+        //const intern = new Intern(// provide Intern information, eg answers.id)
+    //team.push(intern)
+    menu() 
+})
+}
+function menu(){
+inquirer.prompt([
+    // choice type add engeneer, add intern or crfeate profile
+
+]).then(answers =>{
+    if (answers.option === "add engineer")
+        defineEngineer()
+      else if (answers.option === "add intern")
+      defineIntern()
+    else
+    createProfile()   
+})
+}
+function createProfile(){
+   //define html template
+// loop through team array
+}
+function buildProfile() {
+defineManager()
+}
+
+buildProfile()
