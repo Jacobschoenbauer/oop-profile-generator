@@ -18,7 +18,7 @@ THEN I exit the application, and the HTML is generated*/
 const inquirer = require("inquirer");
 const fs = require("fs");
 const { type } = require("os");
-
+const employee = require("./lib/employee");
 const manger = require("./lib/manger");
 const intern = require("./lib/intern");
 const engineer = require("./lib/engineer");
@@ -84,23 +84,22 @@ function defineIntern() {
       {
         type: "input",
         message: "Intern name",
-        name: "github",
+        name: "name",
       },
       {
         type: "input",
         message: "intern email",
-        name: "github",
+        name: "email",
       },
       {
         type: "input",
         message: "School Attending",
         name: "school",
       },
-
     ])
     .then((answers) => {
-      const intern = new Intern(answers.id)
-      team.push(intern)
+      const intern = new Intern(answers.id);
+      team.push(intern);
       menu();
     });
 }
@@ -122,7 +121,8 @@ function menu() {
           }
         },
       },
-    ]).then((answers) => {
+    ])
+    .then((answers) => {
       if (answers.option === "add engineer") defineEngineer();
       else if (answers.option === "add intern") defineIntern();
       else createProfile();
