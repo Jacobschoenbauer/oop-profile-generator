@@ -19,9 +19,9 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const { type } = require("os");
 
-const inquirer = require("./lib/manger");
-const inquirer = require("./lib/intern");
-const inquirer = require("./lib/engineer");
+const manger = require("./lib/manger");
+const intern = require("./lib/intern");
+const engineer = require("./lib/engineer");
 
 const team = [];
 
