@@ -19,66 +19,121 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const { type } = require("os");
 
-const inquirer = require("./lib/manger")
-const inquirer = require("./lib/intern")
-const inquirer = require("./lib/engineer")
+const inquirer = require("./lib/manger");
+const inquirer = require("./lib/intern");
+const inquirer = require("./lib/engineer");
 
+const team = [];
 
-const team = []
-
-
-function defineManager(){
-inquirer.prompt([
-    
-    //manger questions
-]
-).then(answers=>{
-    //const manager = new Manager(// provide manger information, eg answers.id)
-    //team.push(manager)
-    menu() 
-})
+function defineManager() {
+  inquirer
+    .prompt([
+      //manger questions
+      {
+        type: "input",
+        message: "Manger name ?",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "Manger id?",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "Manger email",
+        name: "email",
+      },
+    ])
+    .then((answers) => {
+      const manager = new Manager(answers.id);
+      team.push(manager);
+      menu();
+    });
 }
-function defineEngineer(){
-    inquirer.prompt([
-        //engineer questions
-      
-    
-    ]).then(answers =>{
-        //const engineer = new Engineer(// provide engineer information, eg answers.id)
-    //team.push(engineer)
-    menu() 
-})
+function defineEngineer() {
+  inquirer
+    .prompt([
+      //engineer questions
+      {
+        type: "input",
+        message: "Engineer name ?",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "Github username ?",
+        name: "githubuser",
+      },
+      {
+        type: "input",
+        message: "Github URL",
+        name: "github",
+      },
+    ])
+    .then((answers) => {
+      const engineer = new Engineer(answers.id);
+      team.push(engineer);
+      menu();
+    });
 }
-function defineIntern(){
-    inquirer.prompt([
-        //intern questions
-      
-    
-    ]).then(answers =>{
-        //const intern = new Intern(// provide Intern information, eg answers.id)
-    //team.push(intern)
-    menu() 
-})
-}
-function menu(){
-inquirer.prompt([
-    // choice type add engeneer, add intern or crfeate profile
+function defineIntern() {
+  inquirer
+    .prompt([
+      //intern questions
+      {
+        type: "input",
+        message: "Intern name",
+        name: "github",
+      },
+      {
+        type: "input",
+        message: "intern email",
+        name: "github",
+      },
+      {
+        type: "input",
+        message: "School Attending",
+        name: "school",
+      },
 
-]).then(answers =>{
-    if (answers.option === "add engineer")
-        defineEngineer()
-      else if (answers.option === "add intern")
-      defineIntern()
-    else
-    createProfile()   
-})
+    ])
+    .then((answers) => {
+      const intern = new Intern(answers.id)
+      team.push(intern)
+      menu();
+    });
 }
-function createProfile(){
-   //define html template
-// loop through team array
+function menu() {
+  inquirer
+    .prompt([
+      // choice type add engeneer, add intern or crfeate profile
+      {
+        type: "checkbox",
+        name: "license",
+        message: "Choose from options below",
+        choices: ["add engineer", "add intern", "Create Profile"],
+        validate: (optionGroup) => {
+          if (optionGroup) {
+            return true;
+          } else {
+            console.log("please choose a license");
+            return false;
+          }
+        },
+      },
+    ]).then((answers) => {
+      if (answers.option === "add engineer") defineEngineer();
+      else if (answers.option === "add intern") defineIntern();
+      else createProfile();
+    });
+}
+function createProfile() {
+  //define html template
+  // loop through team array
 }
 function buildProfile() {
-defineManager()
+  defineManager();
 }
 
-buildProfile()
+buildProfile();
