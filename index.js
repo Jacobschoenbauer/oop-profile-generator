@@ -22,6 +22,7 @@ const { type } = require("os");
 const Manager = require("./lib/manager.js");
 const Intern = require("./lib/intern.js");
 const Engineer = require("./lib/engineer.js");
+const { default: Choices } = require("inquirer/lib/objects/choices.js");
 
 const team = [];
 
@@ -57,7 +58,7 @@ function defineEngineer() {
       //engineer questions
       {
         type: "input",
-        message: "Engineer name ?",
+        message: "Engineer name?",
         name: "name",
       },
       {
@@ -108,8 +109,8 @@ function menu() {
     .prompt([
       // choice type add engeneer, add intern or crfeate profile
       {
-        type: "radio",
-        name: "license",
+        type: "checkbox",
+        name: "choice",
         message: "Choose from options below",
         choices: ["add engineer", "add intern", "Create Profile"],
         validate: (optionGroup) => {
@@ -122,13 +123,13 @@ function menu() {
         },
       },
     ])
-    .then((answers) => {
-      if (answers.option === "add engineer") defineEngineer();
-      else if (answers.option === "add intern") defineIntern();
+    .then((choices) => {
+      if (choices !== "add engineer") defineEngineer();
+      else if (choices !== "add intern") defineIntern();
       else createProfile();
-      console.log(answers)
     });
 }
+
 function createProfile() {
   //define html template
   // loop through team array
