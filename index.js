@@ -18,30 +18,30 @@ THEN I exit the application, and the HTML is generated*/
 const inquirer = require("inquirer");
 const fs = require("fs");
 const { type } = require("os");
-const employee = require("./lib/employee");
-const manger = require("./lib/manger");
-const intern = require("./lib/intern");
-const engineer = require("./lib/engineer");
+//const { Employee } = require("./lib/employee");
+const Manager = require("./lib/manager.js");
+const Intern = require("./lib/intern.js");
+const Engineer = require("./lib/engineer.js");
 
 const team = [];
 
 function defineManager() {
   inquirer
     .prompt([
-      //manger questions
+      //Manager questions
       {
         type: "input",
-        message: "Manger name ?",
+        message: "Manager name ?",
         name: "name",
       },
       {
         type: "input",
-        message: "Manger id?",
+        message: "Manager id?",
         name: "id",
       },
       {
         type: "input",
-        message: "Manger email",
+        message: "Manager email",
         name: "email",
       },
     ])
@@ -108,7 +108,7 @@ function menu() {
     .prompt([
       // choice type add engeneer, add intern or crfeate profile
       {
-        type: "checkbox",
+        type: "radio",
         name: "license",
         message: "Choose from options below",
         choices: ["add engineer", "add intern", "Create Profile"],
@@ -116,7 +116,7 @@ function menu() {
           if (optionGroup) {
             return true;
           } else {
-            console.log("please choose a license");
+            console.log("please choose a job");
             return false;
           }
         },
@@ -126,6 +126,7 @@ function menu() {
       if (answers.option === "add engineer") defineEngineer();
       else if (answers.option === "add intern") defineIntern();
       else createProfile();
+      console.log(answers)
     });
 }
 function createProfile() {
