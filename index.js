@@ -22,8 +22,9 @@ const { type } = require("os");
 const Manager = require("./lib/manager.js");
 const Intern = require("./lib/intern.js");
 const Engineer = require("./lib/engineer.js");
-const { default: Choices } = require("inquirer/lib/objects/choices.js");
 
+const generateMarkdown = require("./dist/html.js");
+const Employee = require("./lib/employee.js");
 const team = [];
 
 function defineManager() {
@@ -137,5 +138,21 @@ function createProfile() {
 function buildProfile() {
   defineManager();
 }
+function writeToFile(fileName, data) {
+  fs.appendFile(fileName, data, (err) =>
+    err ? console.log(err) : console.log("Success!")
+  );
+}
+
+// TODO: Create a function to initialize app
+function init() {
+  inquirer.prompt(Employee).then((response) => {
+    const markDown = generateMarkdown(response);
+    writeToFile("index.html", markDown);
+  });
+}
+
+// Function call to initialize app
+init();
 
 buildProfile();
