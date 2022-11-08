@@ -24,4 +24,4 @@ https://github.com/Jacobschoenbauer/oop-profile-generator
 ![img](Screenshot%202022-11-08%20145355.png)
 
 ## Video
-[video](profilegenerator.webm)
+[video](newprofilevideo.mp4)
