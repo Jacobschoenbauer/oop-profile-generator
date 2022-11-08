@@ -131,10 +131,15 @@ function menu() {
     .prompt([
       // choice type add engeneer, add intern or crfeate profile
       {
-        type: "checkbox",
+        type: "list",
         name: "choice",
         message: "Choose from options below",
-        choices: ["add engineer", "add intern", "Create Profile"],
+        choices: [
+          "add manager",
+          "add engineer",
+          "add intern",
+          "Create Profile",
+        ],
         validate: (optionGroup) => {
           if (optionGroup) {
             return true;
@@ -146,16 +151,17 @@ function menu() {
       },
     ])
     .then((entered) => {
-      console.log(entered);
-      if (entered === { choice: ["add engineer"] }) defineEngineer();
-      else if (entered !== { choice: ["add intern"] }) defineIntern();
+      console.log(entered.choice);
+      if (entered.choice === "add engineer") defineEngineer();
+      else if (entered.choice === "add intern") defineIntern();
+      else if (entered.choice === "add manager") defineManager();
       else createProfile();
     });
 }
 
 function createProfile() {}
 function buildProfile() {
-  defineManager();
+  menu();
 }
 
 buildProfile();
