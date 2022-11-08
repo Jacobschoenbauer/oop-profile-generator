@@ -17,8 +17,8 @@ function generateMarkdown(team) {
       <div class="job">Manger</div>
     </article>
     <div class="id">${team[0].id}</div>
-    <div class="email">${team[0].email}</div>
-    <div class="officenumber">${team[0].office}</div>
+    <div class="email"><a href="${team[0].email}">${team[0].email}<a></div>
+    <div class="officenumber">${team[0].officeNumber}</div>
   </section>
   <section class="engineer" style="width: 150px; height:150px; border-style: solid; margin:80px;">
     <article style="font-size: 20px; color: white; background-color: blue;">
@@ -27,8 +27,8 @@ function generateMarkdown(team) {
     </article>
     <div class="id">${team[1].id}</div>
     
-    <div class="email">${team[1].email}</div>
-    <div class="github">${team[1].github}</div>
+    <div class="email"><a href="${team[1].email}">${team[1].email}<a></div>
+    <div class="github"><a href="${team[1].github}">${team[1].github}<a></div>
   </section>
   <section class="intern" style="width: 150px; height:150px; border-style: solid; margin:80px;">
     <article style="font-size: 20px; color: white; background-color: blue;">
@@ -36,7 +36,7 @@ function generateMarkdown(team) {
       <div class="job">Intern</div>
     </article>
     <div class="id">${team[2].id}</div>
-    <div class="email">${team[2].email}</div>
+    <div class="email"><a href="${team[2].email}">${team[2].email}<a></div>
     <div class="school">${team[2].school}</div>
   </section>
 
