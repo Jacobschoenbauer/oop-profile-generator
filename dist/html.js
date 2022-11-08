@@ -1,4 +1,4 @@
-function generateMarkdown(data) {
+function generateMarkdown(team) {
   return ` 
     <!DOCTYPE html>
 <html lang="en">
@@ -13,30 +13,31 @@ function generateMarkdown(data) {
   <div class="group" style="justify-content: center; display:flex ;">
   <section class="manger" style="width: 150px; height:150px; border-style: solid; margin:80px;">
     <article style="font-size: 20px; color: white; background-color: blue;">
-      <div class="name">${data.name}</div>
+      <div class="name">${team[0].name}</div>
       <div class="job">Manger</div>
     </article>
-    <div class="id">${data.id}</div>
-    <div class="email">${data.email}</div>
-    <div class="officenumber">${data.office}</div>
+    <div class="id">${team[0].id}</div>
+    <div class="email">${team[0].email}</div>
+    <div class="officenumber">${team[0].office}</div>
   </section>
   <section class="engineer" style="width: 150px; height:150px; border-style: solid; margin:80px;">
     <article style="font-size: 20px; color: white; background-color: blue;">
-      <div class="name">${data.name}</div>
+      <div class="name">${team[1].name}</div>
       <div class="job">Engineer</div>
     </article>
-    <div class="id">${data.id}</div>
-    <div class="email">${data.email}</div>
-    <div class="github">${data.github}</div>
+    <div class="id">${team[1].id}</div>
+    
+    <div class="email">${team[1].email}</div>
+    <div class="github">${team[1].github}</div>
   </section>
   <section class="intern" style="width: 150px; height:150px; border-style: solid; margin:80px;">
     <article style="font-size: 20px; color: white; background-color: blue;">
-      <div class="name">${data.name}</div>
+      <div class="name">${team[2].name}</div>
       <div class="job">Intern</div>
     </article>
-    <div class="id">${data.id}</div>
-    <div class="email">${data.email}</div>
-    <div class="school">${data.school}</div>
+    <div class="id">${team[2].id}</div>
+    <div class="email">${team[2].email}</div>
+    <div class="school">${team[2].school}</div>
   </section>
 
 </div>

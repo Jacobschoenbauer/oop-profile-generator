@@ -25,6 +25,7 @@ const Engineer = require("./lib/engineer.js");
 
 const generateMarkdown = require("./dist/html.js");
 const Employee = require("./lib/employee.js");
+//const generateMarkdown = require("./dist/html.js");
 const team = [];
 
 function defineManager() {
@@ -159,7 +160,18 @@ function menu() {
     });
 }
 
-function createProfile() {}
+function createProfile() {
+  console.log(team)
+  const generateMarkingdown = generateMarkdown(team)
+  fs.writeFile("./dist/Team-Profile.html", generateMarkingdown, (err) => {
+      if (err)
+        console.log(err);
+      else {
+        console.log("Finished");
+      }
+    });
+
+}
 function buildProfile() {
   menu();
 }
