@@ -46,10 +46,17 @@ function defineManager() {
         message: "Manager email",
         name: "email",
       },
+      {
+        type: "input",
+        message: "Office Number",
+        name: "officeNumber",
+      },
     ])
-    .then((answers) => {
-      const manager = new Manager(answers.id);
+    .then((answer) => {
+      const { name, id, email, officeNumber } = answer;
+      const manager = new Manager(name, id, email, officeNumber);
       team.push(manager);
+      console.log(manager);
       menu();
     });
 }
@@ -64,8 +71,13 @@ function defineEngineer() {
       },
       {
         type: "input",
-        message: "Github username ?",
-        name: "githubuser",
+        message: "Engineer id?",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "Engineer email",
+        name: "email",
       },
       {
         type: "input",
@@ -73,10 +85,12 @@ function defineEngineer() {
         name: "github",
       },
     ])
-    .then((answers) => {
-      const engineer = new Engineer(answers.id);
+    .then((answer) => {
+      const { name, id, email, github } = answer;
+      const engineer = new Engineer(name, id, email, github);
       team.push(engineer);
-      menu();
+      console.log(engineer);
+      //menu();
     });
 }
 function defineIntern() {
@@ -90,7 +104,7 @@ function defineIntern() {
       },
       {
         type: "input",
-        message: "intern email",
+        message: "Intern email",
         name: "email",
       },
       {
@@ -99,9 +113,11 @@ function defineIntern() {
         name: "school",
       },
     ])
-    .then((answers) => {
-      const intern = new Intern(answers.id);
+    .then((answer) => {
+      const { name, id, email, school } = answer;
+      const intern = new Intern(name, id, email, school);
       team.push(intern);
+      console.log(intern)
       menu();
     });
 }
@@ -132,27 +148,10 @@ function menu() {
 }
 
 function createProfile() {
-  //define html template
-  // loop through team array
+ 
 }
 function buildProfile() {
   defineManager();
 }
-function writeToFile(fileName, data) {
-  fs.appendFile(fileName, data, (err) =>
-    err ? console.log(err) : console.log("Success!")
-  );
-}
-
-// TODO: Create a function to initialize app
-function init() {
-  inquirer.prompt(Employee).then((response) => {
-    const markDown = generateMarkdown(response);
-    writeToFile("index.html", markDown);
-  });
-}
-
-// Function call to initialize app
-init();
 
 buildProfile();

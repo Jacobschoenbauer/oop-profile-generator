@@ -14,11 +14,11 @@ function generateMarkdown(data) {
   <section class="manger" style="width: 150px; height:150px; border-style: solid; margin:80px;">
     <article style="font-size: 20px; color: white; background-color: blue;">
       <div class="name">${data.name}</div>
-      <div class="job">Manager</div>
+      <div class="job">Manger</div>
     </article>
     <div class="id">${data.id}</div>
     <div class="email">${data.email}</div>
-    <div class="officenumber">1</div>
+    <div class="officenumber">${data.office}</div>
   </section>
   <section class="engineer" style="width: 150px; height:150px; border-style: solid; margin:80px;">
     <article style="font-size: 20px; color: white; background-color: blue;">
