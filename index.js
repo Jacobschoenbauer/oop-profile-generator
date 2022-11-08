@@ -90,7 +90,7 @@ function defineEngineer() {
       const engineer = new Engineer(name, id, email, github);
       team.push(engineer);
       console.log(engineer);
-      //menu();
+      menu();
     });
 }
 function defineIntern() {
@@ -109,6 +109,11 @@ function defineIntern() {
       },
       {
         type: "input",
+        message: "Intern id",
+        name: "id",
+      },
+      {
+        type: "input",
         message: "School Attending",
         name: "school",
       },
@@ -117,7 +122,7 @@ function defineIntern() {
       const { name, id, email, school } = answer;
       const intern = new Intern(name, id, email, school);
       team.push(intern);
-      console.log(intern)
+      console.log(intern);
       menu();
     });
 }
@@ -140,16 +145,15 @@ function menu() {
         },
       },
     ])
-    .then((choices) => {
-      if (choices !== "add engineer") defineEngineer();
-      else if (choices !== "add intern") defineIntern();
+    .then((entered) => {
+      console.log(entered);
+      if (entered === { choice: ["add engineer"] }) defineEngineer();
+      else if (entered !== { choice: ["add intern"] }) defineIntern();
       else createProfile();
     });
 }
 
-function createProfile() {
- 
-}
+function createProfile() {}
 function buildProfile() {
   defineManager();
 }
